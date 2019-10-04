@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="audio_processing_for_DE2">
+		<CBX_INST_ENTRY INSTANCE_NAME="|topLevelDE2|audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO" CBX_FILE_NAME="scfifo_o441.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|topLevelDE2|audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO" CBX_FILE_NAME="scfifo_o441.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|topLevelDE2|audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO" CBX_FILE_NAME="scfifo_o441.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|topLevelDE2|audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO" CBX_FILE_NAME="scfifo_o441.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

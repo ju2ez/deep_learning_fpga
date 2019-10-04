@@ -1,0 +1,14 @@
+entity circular_buffer is
+  generic (ram_data_width : integer := 4;    -- width of data
+           ram_address_width : integer := 1; -- width of address
+           num_values : integer := 2);       -- number of values
+  port(
+       read : in std_logic;
+       write : in std_logic;
+       reset : in std_logic;
+       datain : in std_logic_vector(ram_data_width-1 downto 0);
+       dataout : out std_logic_vector(ram_data_width-1 downto 0);
+       data_ready : out std_logic;
+       clk : in std_logic
+);
+end circular_buffer;

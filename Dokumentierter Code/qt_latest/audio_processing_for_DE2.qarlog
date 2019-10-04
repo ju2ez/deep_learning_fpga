@@ -1,0 +1,40 @@
+Quartus II Archive log --	C:/Users/User/Documents/qt_latest/audio_processing_for_DE2.qarlog
+
+Archive:	C:/Users/User/Documents/qt_latest/audio_processing_for_DE2.qar
+Date:		Thu Jul 04 18:18:30 2019
+Quartus II 32-bit		13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_Audio_Bit_Counter.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_Audio_In_Deserializer.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_Clock_Edge.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_I2C.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_I2C_DC_Auto_Initialize.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_I2C_LCM_Auto_Initialize.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_SYNC_FIFO.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/Altera_UP_Slow_Clock_Generator.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/audio_and_video_config.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/audio_codec.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/circular_buffer.vhd
+C:/Users/User/Documents/qt_latest/ACDI_DE2/clock_generator.v
+C:/Users/User/Documents/qt_latest/ACDI_DE2/neuron.vhd
+C:/Users/User/Documents/qt_latest/ACDI_DE2/ring_buffer_toplevel.vhd
+C:/Users/User/Documents/qt_latest/assignment_defaults.qdf
+C:/Users/User/Documents/qt_latest/audio_processing_for_DE2.qpf
+C:/Users/User/Documents/qt_latest/audio_processing_for_DE2.qsf
+C:/Users/User/Documents/qt_latest/files/audioDataPkg.vhd
+C:/Users/User/Documents/qt_latest/files/buffer_register.vhd
+C:/Users/User/Documents/qt_latest/files/compare_unit.vhd
+C:/Users/User/Documents/qt_latest/files/copy_machine.vhd
+C:/Users/User/Documents/qt_latest/files/copy_machine_control_unit.vhd
+C:/Users/User/Documents/qt_latest/files/topLevelDE2.vhd
+C:/Users/User/Documents/qt_latest/files/yourCircuit.vhd
+C:/Users/User/Documents/qt_latest/incremental_db/compiled_partitions/audio_processing_for_DE2.db_info
+C:/Users/User/Documents/qt_latest/output_files/denoising_auto_encoder.vhd
+C:/Users/User/Documents/qt_latest/simulator/tb_testWithSimulator.vhd
+	======= Total: 29 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

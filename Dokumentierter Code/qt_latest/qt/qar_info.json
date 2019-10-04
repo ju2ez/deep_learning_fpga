@@ -1,0 +1,7 @@
+{
+	"common_dir" : "/home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/",
+	"acds_version" : "Version 18.1.0",
+	"platform" : "linux",
+	"os" : "Ubuntu 18.04.2",
+	"qpf" : "project/audio_processing_for_DE2.qpf"
+}

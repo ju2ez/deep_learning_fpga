@@ -1,0 +1,209 @@
+Restore Archived Project report for audio_processing_for_DE2
+Thu Jul 04 14:16:46 2019
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Thu Jul 04 14:16:46 2019 ;
+; Revision Name                   ; audio_processing_for_DE2              ;
+; Top-level Entity Name           ; topLevelDE2                           ;
+; Family                          ; Cyclone IV E                          ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'C:/Users/User/Documents/qt/project/quartus_project/project/audio_processing_for_DE2.qar' into the 'C:\\Users\\User\\Documents\\qt_latest/' directory
+Info: Generated report 'audio_processing_for_DE2.restore.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/13.0sp1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 32-bit Shell was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 216 megabytes
+    Info: Processing ended: Thu Jul 04 14:16:46 2019
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++---------------------------------------------------------------------------------------------+
+; Files Restored                                                                              ;
++---------------------------------------------------------------------------------------------+
+; File Name                                                                                   ;
++---------------------------------------------------------------------------------------------+
+; ACDI_DE2/Altera_UP_Audio_Bit_Counter.v                                                      ;
+; ACDI_DE2/Altera_UP_Audio_In_Deserializer.v                                                  ;
+; ACDI_DE2/Altera_UP_Audio_Out_Serializer.v                                                   ;
+; ACDI_DE2/Altera_UP_Clock_Edge.v                                                             ;
+; ACDI_DE2/Altera_UP_I2C.v                                                                    ;
+; ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v                                                 ;
+; ACDI_DE2/Altera_UP_I2C_DC_Auto_Initialize.v                                                 ;
+; ACDI_DE2/Altera_UP_I2C_LCM_Auto_Initialize.v                                                ;
+; ACDI_DE2/Altera_UP_SYNC_FIFO.v                                                              ;
+; ACDI_DE2/Altera_UP_Slow_Clock_Generator.v                                                   ;
+; ACDI_DE2/audio_and_video_config.v                                                           ;
+; ACDI_DE2/audio_codec.v                                                                      ;
+; ACDI_DE2/circular_buffer.vhd                                                                ;
+; ACDI_DE2/clock_generator.v                                                                  ;
+; ACDI_DE2/neuron.vhd                                                                         ;
+; ACDI_DE2/ring_buffer_toplevel.vhd                                                           ;
+; audio_processing_for_DE2.qpf                                                                ;
+; audio_processing_for_DE2.qsf                                                                ;
+; db/a_dpfifo_bs31.tdf                                                                        ;
+; db/altsyncram_fh81.tdf                                                                      ;
+; audio_processing_for_DE2.cbx.xml                                                            ;
+; db/cmpr_ks8.tdf                                                                             ;
+; db/cntr_0ab.tdf                                                                             ;
+; db/cntr_ca7.tdf                                                                             ;
+; db/cntr_v9b.tdf                                                                             ;
+; db/scfifo_o441.tdf                                                                          ;
+; export_db/audio_processing_for_DE2.archive.qmsg                                             ;
+; export_db/audio_processing_for_DE2.asm.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.cmp.atm                                                  ;
+; export_db/audio_processing_for_DE2.cmp.bpm                                                  ;
+; export_db/audio_processing_for_DE2.cmp.hdbx                                                 ;
+; export_db/audio_processing_for_DE2.cmp.kpt                                                  ;
+; export_db/audio_processing_for_DE2.cmp.logdb                                                ;
+; export_db/audio_processing_for_DE2.cmp.rcf                                                  ;
+; export_db/audio_processing_for_DE2.cmp.sci                                                  ;
+; export_db/audio_processing_for_DE2.cmp.scidsc                                               ;
+; export_db/audio_processing_for_DE2.cmp.xml                                                  ;
+; export_db/audio_processing_for_DE2.cmp_merge.kpt                                            ;
+; export_db/audio_processing_for_DE2.db_export.qmsg                                           ;
+; export_db/audio_processing_for_DE2.db_info                                                  ;
+; export_db/audio_processing_for_DE2.eda.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.export_db_files                                          ;
+; export_db/audio_processing_for_DE2.export_db_post_map_files                                 ;
+; export_db/audio_processing_for_DE2.export_db_report_files                                   ;
+; export_db/audio_processing_for_DE2.fit.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.hier_info                                                ;
+; export_db/audio_processing_for_DE2.map.atm                                                  ;
+; export_db/audio_processing_for_DE2.map.bpm                                                  ;
+; export_db/audio_processing_for_DE2.map.hdbx                                                 ;
+; export_db/audio_processing_for_DE2.map.kpt                                                  ;
+; export_db/audio_processing_for_DE2.map.logdb                                                ;
+; export_db/audio_processing_for_DE2.map.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.map.sci                                                  ;
+; export_db/audio_processing_for_DE2.map.scidsc                                               ;
+; export_db/audio_processing_for_DE2.map_bb.atm                                               ;
+; export_db/audio_processing_for_DE2.map_bb.hdbx                                              ;
+; export_db/audio_processing_for_DE2.map_bb.logdb                                             ;
+; export_db/audio_processing_for_DE2.map_bb.sci                                               ;
+; export_db/audio_processing_for_DE2.map_bb.scidsc                                            ;
+; export_db/audio_processing_for_DE2.pre_map.hdbx                                             ;
+; export_db/audio_processing_for_DE2.rom0_Altera_UP_I2C_AV_Auto_Initialize_1d95c51.hdl.mif    ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.atm                                   ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.dfp                                   ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.hdbx                                  ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.kpt                                   ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.logdb                                 ;
+; export_db/audio_processing_for_DE2.root_partition.cmp.rcf                                   ;
+; export_db/audio_processing_for_DE2.root_partition.map.atm                                   ;
+; export_db/audio_processing_for_DE2.root_partition.map.dpi                                   ;
+; export_db/audio_processing_for_DE2.root_partition.map.hbdb.atm                              ;
+; export_db/audio_processing_for_DE2.root_partition.map.hbdb.hb_info                          ;
+; export_db/audio_processing_for_DE2.root_partition.map.hbdb.hdbx                             ;
+; export_db/audio_processing_for_DE2.root_partition.map.hbdb.sig                              ;
+; export_db/audio_processing_for_DE2.root_partition.map.hdbx                                  ;
+; export_db/audio_processing_for_DE2.root_partition.map.kpt                                   ;
+; export_db/audio_processing_for_DE2.rpp.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.sta.qmsg                                                 ;
+; export_db/audio_processing_for_DE2.syn_hier_info                                            ;
+; files/audioDataPkg.vhd                                                                      ;
+; files/buffer_register.vhd                                                                   ;
+; files/compare_unit.vhd                                                                      ;
+; files/copy_machine.vhd                                                                      ;
+; files/copy_machine_control_unit.vhd                                                         ;
+; files/topLevelDE2.vhd                                                                       ;
+; files/yourCircuit.vhd                                                                       ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.db_info                         ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.cdb          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.dfp          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.hdb          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.kpt          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.logdb        ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.cmp.rcfdb        ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.cdb          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.dpi          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.hbdb.cdb     ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.hbdb.hb_info ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.hbdb.hdb     ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.hbdb.sig     ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.hdb          ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.root_partition.map.kpt          ;
+; output_files/audio_processing_for_DE2.asm.rpt                                               ;
+; output_files/audio_processing_for_DE2.db_export.rpt                                         ;
+; output_files/audio_processing_for_DE2.drc.rpt                                               ;
+; output_files/audio_processing_for_DE2.eda.rpt                                               ;
+; output_files/audio_processing_for_DE2.fit.rpt                                               ;
+; output_files/audio_processing_for_DE2.fit.smsg                                              ;
+; output_files/audio_processing_for_DE2.fit.summary                                           ;
+; output_files/audio_processing_for_DE2.flow.rpt                                              ;
+; output_files/audio_processing_for_DE2.jdi                                                   ;
+; output_files/audio_processing_for_DE2.map.rpt                                               ;
+; output_files/audio_processing_for_DE2.map.summary                                           ;
+; output_files/audio_processing_for_DE2.pin                                                   ;
+; output_files/audio_processing_for_DE2.sof                                                   ;
+; output_files/audio_processing_for_DE2.sta.rpt                                               ;
+; output_files/audio_processing_for_DE2.sta.summary                                           ;
+; output_files/denoising_auto_encoder.vhd                                                     ;
+; simulator/tb_testWithSimulator.vhd                                                          ;
+; assignment_defaults.qdf                                                                     ;
+; megafunctions/a_dpfifo.inc                                                                  ;
+; megafunctions/a_f2fifo.inc                                                                  ;
+; megafunctions/a_fffifo.inc                                                                  ;
+; megafunctions/a_i2fifo.inc                                                                  ;
+; megafunctions/a_regfifo.inc                                                                 ;
+; megafunctions/aglobal130.inc                                                                ;
+; megafunctions/altpll.tdf                                                                    ;
+; megafunctions/cbx.lst                                                                       ;
+; megafunctions/cycloneii_pll.inc                                                             ;
+; megafunctions/scfifo.tdf                                                                    ;
+; megafunctions/stratix_pll.inc                                                               ;
+; megafunctions/stratixii_pll.inc                                                             ;
+; altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd                                     ;
+; altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd                                     ;
+; altera/13.0sp1/quartus/libraries/vhdl/ieee/timing_b.vhd                                     ;
+; altera/13.0sp1/quartus/libraries/vhdl/ieee/timing_p.vhd                                     ;
++---------------------------------------------------------------------------------------------+
+
+
++-------------------------+
+; Files Not Restored      ;
++-------------------------+
+; File Name               ;
++-------------------------+
+; assignment_defaults.qdf ;
++-------------------------+
+
+

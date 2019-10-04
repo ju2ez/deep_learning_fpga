@@ -1,0 +1,560 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/simulation/modelsim
+Paudiodatapkg
+Z0 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+32
+Z3 !s110 1565106369
+!i10b 1
+Z4 w1562144750
+Z5 d/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest
+8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/audioDataPkg.vhd
+F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/audioDataPkg.vhd
+l0
+L5
+V>FCB_O=hd3OR[Vh]ocEfF3
+!s100 LYZI]Ygk@V=J0LbfHdlYA3
+Z6 OV;C;10.5b;63
+Z7 !s108 1565106369.000000
+!s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/audioDataPkg.vhd|
+!s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/audioDataPkg.vhd|
+!i113 1
+Z8 o-work work
+Z9 tExplicit 1 CvgOpt 0
+Ebuffer_register
+Z10 DPx4 work 12 audiodatapkg 0 22 >FCB_O=hd3OR[Vh]ocEfF3
+R0
+R1
+R2
+32
+R3
+!i10b 1
+Z11 w1562144752
+R5
+Z12 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/buffer_register.vhd
+Z13 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/buffer_register.vhd
+l0
+L14
+VHA27H<a<5ba[=Z?m[OGSe1
+!s100 <diVlSX1_a^n2Cg8T0A5S2
+R6
+R7
+Z14 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/buffer_register.vhd|
+Z15 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/buffer_register.vhd|
+!i113 1
+R8
+R9
+Abehave
+R10
+R0
+R1
+R2
+DEx4 work 15 buffer_register 0 22 HA27H<a<5ba[=Z?m[OGSe1
+32
+R3
+!i10b 1
+l36
+L27
+V@AX8i<VUMUnAhO?UZod421
+!s100 zLJh:OoHZ8zPYIizjH0nT3
+R6
+R7
+R14
+R15
+!i113 1
+R8
+R9
+Ecompare_unit
+R10
+R0
+R1
+R2
+32
+Z16 !s110 1565110194
+!i10b 1
+Z17 w1565110182
+R5
+Z18 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/compare_unit.vhd
+Z19 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/compare_unit.vhd
+l0
+L10
+V5I88_FzZf]8@Z[0U4:W<>3
+!s100 :nPghShm6h5?:Zi;1;YTM0
+R6
+Z20 !s108 1565110194.000000
+Z21 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/compare_unit.vhd|
+Z22 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/compare_unit.vhd|
+!i113 1
+R8
+R9
+Abehave
+R10
+R0
+R1
+R2
+DEx4 work 12 compare_unit 0 22 5I88_FzZf]8@Z[0U4:W<>3
+32
+R16
+!i10b 1
+l36
+L23
+V<]DOdXW^zP0W?RVK[MB[l3
+!s100 AaG?J4;e[O<ieoDlnWDP;0
+R6
+R20
+R21
+R22
+!i113 1
+R8
+R9
+Ecopy_machine
+R10
+R0
+R1
+R2
+32
+R3
+!i10b 1
+Z23 w1565102075
+R5
+Z24 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine.vhd
+Z25 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine.vhd
+l0
+L18
+VRkjRn0TJK[5XHle8;;ob22
+!s100 iSYKFFh944d7K21OJ`XgT3
+R6
+R7
+Z26 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine.vhd|
+Z27 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine.vhd|
+!i113 1
+R8
+R9
+Aarch
+R10
+R0
+R1
+R2
+Z28 DEx4 work 12 copy_machine 0 22 RkjRn0TJK[5XHle8;;ob22
+32
+R3
+!i10b 1
+l172
+L27
+VoTcll6VM3mlaf:=z5C[Tz2
+!s100 F<giX`Mb7BGe=<40a0V2`1
+R6
+R7
+R26
+R27
+!i113 1
+R8
+R9
+Ecopy_machine_control_unit
+R10
+R0
+R1
+R2
+32
+R3
+!i10b 1
+R4
+R5
+Z29 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine_control_unit.vhd
+Z30 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine_control_unit.vhd
+l0
+L12
+V4mZ?`b@FRYZ9n_X]D[<R]2
+!s100 ZGYU26e[L<i?Le7MC36OQ3
+R6
+R7
+Z31 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine_control_unit.vhd|
+Z32 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/copy_machine_control_unit.vhd|
+!i113 1
+R8
+R9
+Abehave
+R10
+R0
+R1
+R2
+DEx4 work 25 copy_machine_control_unit 0 22 4mZ?`b@FRYZ9n_X]D[<R]2
+32
+R3
+!i10b 1
+l27
+L26
+VWnQ<`@ol4agg7N9VWYNi=1
+!s100 1ESQOb`60F@@gLoA:;U>j0
+R6
+R7
+R31
+R32
+!i113 1
+R8
+R9
+Edenoising_auto_encoder
+R10
+R0
+R1
+R2
+32
+R3
+!i10b 1
+Z33 w1565104568
+R5
+Z34 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/output_files/denoising_auto_encoder.vhd
+Z35 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/output_files/denoising_auto_encoder.vhd
+l0
+L10
+VN48^@;PM@O[HoIZ3?K^gj2
+!s100 doVOG7z=HMYc4;8L@z]4_2
+R6
+R7
+Z36 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/output_files/denoising_auto_encoder.vhd|
+Z37 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/output_files/denoising_auto_encoder.vhd|
+!i113 1
+R8
+R9
+Abehave
+R10
+R0
+R1
+R2
+Z38 DEx4 work 22 denoising_auto_encoder 0 22 N48^@;PM@O[HoIZ3?K^gj2
+32
+R3
+!i10b 1
+l34
+L25
+V94mi]_=4Xa98N3<eG?Kbh1
+!s100 3oGLF5X6gna21>KcMmVTe3
+R6
+R7
+R36
+R37
+!i113 1
+R8
+R9
+Efull_signal_unit
+R10
+R0
+R1
+R2
+32
+Z39 !s110 1565106574
+!i10b 1
+Z40 w1565101162
+R5
+Z41 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/full_signal_unit.vhd
+Z42 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/full_signal_unit.vhd
+l0
+L10
+VYM=L1117NIN[SV7^GbLGn0
+!s100 cYAN9Oa68eg3`IoeRnXQ40
+R6
+Z43 !s108 1565106574.000000
+Z44 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/full_signal_unit.vhd|
+Z45 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/full_signal_unit.vhd|
+!i113 1
+R8
+R9
+Abehave
+R10
+R0
+R1
+R2
+DEx4 work 16 full_signal_unit 0 22 YM=L1117NIN[SV7^GbLGn0
+32
+R39
+!i10b 1
+l50
+L29
+VRbFRzmI]`TEoUKE`6bPUS3
+!s100 zPYYjhG90?cgg;jZJaR8f2
+R6
+R43
+R44
+R45
+!i113 1
+R8
+R9
+Ering_buffer_toplevel
+R10
+R0
+R1
+R2
+32
+R3
+!i10b 1
+Z46 w1565101907
+R5
+Z47 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/ACDI_DE2/ring_buffer_toplevel.vhd
+Z48 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/ACDI_DE2/ring_buffer_toplevel.vhd
+l0
+L13
+VK^:VQ70NJ[<]91N]0QRZz0
+!s100 X:CUd9WB@RjgoS_A>hcOH1
+R6
+R7
+Z49 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/ACDI_DE2/ring_buffer_toplevel.vhd|
+Z50 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/ACDI_DE2/ring_buffer_toplevel.vhd|
+!i113 1
+R8
+R9
+Artl
+R10
+R0
+R1
+R2
+Z51 DEx4 work 20 ring_buffer_toplevel 0 22 K^:VQ70NJ[<]91N]0QRZz0
+32
+R3
+!i10b 1
+l66
+L42
+V^1HC^X6hW[U^8m:J;X95d1
+!s100 YTAD;m4X<9o^IZ_69CWUY1
+R6
+R7
+R49
+R50
+!i113 1
+R8
+R9
+Etb_audio_processing_copy_machine
+R0
+R10
+R1
+R2
+32
+R3
+!i10b 1
+Z52 w1564523734
+R5
+Z53 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_audio_processing_copy_machine.vhd
+Z54 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_audio_processing_copy_machine.vhd
+l0
+L5
+Vza?kY1=XZ8ioY5dgP2kHb2
+!s100 20GEV>Pz5@U>z;i7n23=z3
+R6
+R7
+Z55 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_audio_processing_copy_machine.vhd|
+Z56 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_audio_processing_copy_machine.vhd|
+!i113 1
+R8
+R9
+Atb
+R28
+R0
+R10
+R1
+R2
+DEx4 work 32 tb_audio_processing_copy_machine 0 22 za?kY1=XZ8ioY5dgP2kHb2
+32
+R3
+!i10b 1
+l33
+L8
+V9_?ni?F1QM>S;[EX:BCNz1
+!s100 m4B8cPgK3fJPf;<d4OPLe2
+R6
+R7
+R55
+R56
+!i113 1
+R8
+R9
+Etb_ringbuffer_and_autoencoder
+R0
+R10
+R1
+R2
+32
+R16
+!i10b 1
+Z57 w1565105139
+R5
+Z58 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_ringbuffer_and_autoencoder.vhd
+Z59 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_ringbuffer_and_autoencoder.vhd
+l0
+L5
+VG2m10ZHn?Ya6cWiCDSoED2
+!s100 >L8bWS<koUg:o1d4PiF[_0
+R6
+R20
+Z60 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_ringbuffer_and_autoencoder.vhd|
+Z61 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/tb_ringbuffer_and_autoencoder.vhd|
+!i113 1
+R8
+R9
+Atb
+R38
+R51
+R0
+R10
+R1
+R2
+DEx4 work 29 tb_ringbuffer_and_autoencoder 0 22 G2m10ZHn?Ya6cWiCDSoED2
+32
+R16
+!i10b 1
+l129
+L8
+V;D7VL;63c`hAzjDcjjA791
+!s100 86Pz6m:5]jzZS<=X_4=FX2
+R6
+R20
+R60
+R61
+!i113 1
+R8
+R9
+Etb_top_level
+Z62 w1565281090
+R10
+R0
+Z63 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z64 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+R1
+R2
+R5
+Z65 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/qt/project/files/tb_top_level.vhd
+Z66 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/qt/project/files/tb_top_level.vhd
+l0
+L12
+V0LIz>N`WeJ9TB_OL^[C7P2
+!s100 NG:FT=`@iCT4azB=A`nEl3
+R6
+32
+Z67 !s110 1565281309
+!i10b 1
+Z68 !s108 1565281309.000000
+Z69 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/qt/project/files/tb_top_level.vhd|
+Z70 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/qt/project/files/tb_top_level.vhd|
+!i113 1
+R8
+R9
+Astruct
+R28
+R10
+R0
+R63
+R64
+R1
+R2
+DEx4 work 12 tb_top_level 0 22 0LIz>N`WeJ9TB_OL^[C7P2
+l73
+L15
+VB2HKQGG5anWH=:zFMhi4f0
+!s100 PPIET26eoSC?R;0BCgMcX1
+R6
+32
+R67
+!i10b 1
+R68
+R69
+R70
+!i113 1
+R8
+R9
+Etoplevelde2
+R10
+R0
+R63
+R64
+R1
+R2
+32
+Z71 !s110 1565279599
+!i10b 1
+Z72 w1565279579
+R5
+Z73 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/topLevelDE2.vhd
+Z74 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/topLevelDE2.vhd
+l0
+L12
+V]kHj8GNNzzE1R0<[mLedU1
+!s100 UzPkV:cli`fX<kAjn?^7;3
+R6
+Z75 !s108 1565279599.000000
+Z76 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/topLevelDE2.vhd|
+Z77 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/topLevelDE2.vhd|
+!i113 1
+R8
+R9
+Astruct
+R10
+R0
+R63
+R64
+R1
+R2
+DEx4 work 11 toplevelde2 0 22 ]kHj8GNNzzE1R0<[mLedU1
+32
+R71
+!i10b 1
+l74
+L25
+V9zBVfJIHJnlnc8XRU=h`12
+!s100 DZ^5eeh7o`OPY:2RclN_C2
+R6
+R75
+R76
+R77
+!i113 1
+R8
+R9
+Eyourcircuit
+R10
+R0
+R1
+R2
+32
+Z78 !s110 1565106370
+!i10b 1
+R4
+R5
+Z79 8/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/yourCircuit.vhd
+Z80 F/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/yourCircuit.vhd
+l0
+L17
+Vo]2<OWfhn]MHDh54`[:fJ0
+!s100 d2HMUgE^1Uf<k0nS3mB2<2
+R6
+R7
+Z81 !s90 -reportprogress|300|-work|work|/home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/yourCircuit.vhd|
+Z82 !s107 /home/julian/Documents/Julian_Hatzky/sonstiges/qt_latest/files/yourCircuit.vhd|
+!i113 1
+R8
+R9
+Atest
+R10
+R0
+R1
+R2
+DEx4 work 11 yourcircuit 0 22 o]2<OWfhn]MHDh54`[:fJ0
+32
+R78
+!i10b 1
+l26
+L25
+VW8an5LE6Ze7nTQl_G>S2N0
+!s100 9bWSUlXiI8Z]gNclB51N_0
+R6
+R7
+R81
+R82
+!i113 1
+R8
+R9

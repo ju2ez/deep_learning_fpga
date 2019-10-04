@@ -1,0 +1,254 @@
+Design Assistant report for audio_processing_for_DE2
+Thu Jun 13 16:09:01 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Design Assistant Summary
+  3. Design Assistant Settings
+  4. Medium Violations
+  5. Information only Violations
+  6. Design Assistant Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Design Assistant Summary                                                ;
++-----------------------------------+-------------------------------------+
+; Design Assistant Status           ; Analyzed - Thu Jun 13 16:09:01 2019 ;
+; Revision Name                     ; audio_processing_for_DE2            ;
+; Top-level Entity Name             ; topLevelDE2                         ;
+; Family                            ; Cyclone IV E                        ;
+; Total Critical Violations         ; 0                                   ;
+; Total High Violations             ; 0                                   ;
+; Total Medium Violations           ; 1                                   ;
+; - Rule R102                       ; 1                                   ;
+; Total Information only Violations ; 63                                  ;
+; - Rule T101                       ; 13                                  ;
+; - Rule T102                       ; 50                                  ;
++-----------------------------------+-------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Design Assistant Settings                                                                                                                                                                ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Option                                                                                                                                                               ; Setting      ; To ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+; Design Assistant mode                                                                                                                                                ; Post-Fitting ;    ;
+; Threshold value for clock net not mapped to clock spines rule                                                                                                        ; 25           ;    ;
+; Minimum number of clock port feed by gated clocks                                                                                                                    ; 30           ;    ;
+; Minimum number of node fan-out                                                                                                                                       ; 30           ;    ;
+; Maximum number of nodes to report                                                                                                                                    ; 50           ;    ;
+; Rule C101: Gated clock should be implemented according to the Intel FPGA standard scheme                                                                             ; On           ;    ;
+; Rule C102: Logic cell should not be used to generate an inverted clock signal                                                                                        ; On           ;    ;
+; Rule C103: Gated clock does not feed at least a pre-defined number of clock ports to effectively save power                                                          ; On           ;    ;
+; Rule C104: Clock signal source should drive only clock input ports                                                                                                   ; On           ;    ;
+; Rule C105: Clock signal should be a global signal                                                                                                                    ; On           ;    ;
+; Rule C106: Clock signal source should not drive registers triggered by different clock edges                                                                         ; On           ;    ;
+; Rule R101: Combinational logic used as a reset signal should be synchronized                                                                                         ; On           ;    ;
+; Rule R102: External reset signals should be synchronized using two cascaded registers                                                                                ; On           ;    ;
+; Rule R103: External reset signal should be correctly synchronized                                                                                                    ; On           ;    ;
+; Rule R104: The reset signal that is generated in one clock domain and used in another clock domain should be correctly synchronized                                  ; On           ;    ;
+; Rule R105: The reset signal that is generated in one clock domain and used in another clock domain should be synchronized                                            ; On           ;    ;
+; Rule T101: Nodes with more than the specified number of fan-outs                                                                                                     ; On           ;    ;
+; Rule T102: Top nodes with the highest number of fan-outs                                                                                                             ; On           ;    ;
+; Rule A101: Design should not contain combinational loops                                                                                                             ; On           ;    ;
+; Rule A102: Register output should not drive its own control signal directly or through combinational logic                                                           ; On           ;    ;
+; Rule A103: Design should not contain delay chains                                                                                                                    ; On           ;    ;
+; Rule A104: Design should not contain ripple clock structures                                                                                                         ; On           ;    ;
+; Rule A105: Pulses should not be implemented asynchronously                                                                                                           ; On           ;    ;
+; Rule A106: Multiple pulses should not be generated in design                                                                                                         ; On           ;    ;
+; Rule A107: Design should not contain SR latches                                                                                                                      ; On           ;    ;
+; Rule A108: Design should not contain latches                                                                                                                         ; On           ;    ;
+; Rule S101: Output enable and input of the same tri-state node should not be driven by same signal source                                                             ; On           ;    ;
+; Rule S102: Synchronous port and asynchronous port of the same register should not be driven by the same signal source                                                ; On           ;    ;
+; Rule S103: More than one asynchronous port of a register should not be driven by the same signal source                                                              ; On           ;    ;
+; Rule S104: Clock port and any other port of a register should not be driven by the same signal source                                                                ; On           ;    ;
+; Rule D101: Data bits are not synchronized when transferred between asynchronous clock domains                                                                        ; On           ;    ;
+; Rule D102: Multiple data bits that are transferred across asynchronous clock domains are synchronized, but not all bits may be aligned in the receiving clock domain ; On           ;    ;
+; Rule D103: Data bits are not correctly synchronized when transferred between asynchronous clock domains                                                              ; On           ;    ;
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Medium Violations                                                                                                                                                                     ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+; Rule name                                                                             ; Name                                                                                          ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+; Rule R102: External reset signals should be synchronized using two cascaded registers ; KEY[0]                                                                                        ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|COPY_MACHINE_CONTROL_UNIT:control_unit|STATE.TO_AUDIO_CODEC_INTERFACE ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|COPY_MACHINE_CONTROL_UNIT:control_unit|STATE.PROCESSING               ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|COPY_MACHINE_CONTROL_UNIT:control_unit|STATE.INPUT_BUFFER             ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|COPY_MACHINE_CONTROL_UNIT:control_unit|STATE.WAIT_FOR_DATA            ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:output_register|s_current_value_left[23]              ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:input_register|s_current_value_left[0]                ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:input_register|s_current_value_left[1]                ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:input_register|s_current_value_left[2]                ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:input_register|s_current_value_left[3]                ;
+;  Reset signal destination node(s) list                                                ; copy_machine:processing|buffer_register:input_register|s_current_value_left[4]                ;
++---------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Information only Violations                                                                                                                                                                                                                                                                   ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule name                                                        ; Name                                                                                                                                                                                                             ; Fan-Out ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[3]                                                                                                            ; 41      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[0]                                                                                                            ; 50      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; CLOCK_50~inputclkctrl                                                                                                                                                                                            ; 449     ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[1]                                                                                                            ; 48      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[2]                                                                                                            ; 45      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[4]                                                                                                            ; 48      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_left_channel                                                                                                                          ; 48      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; ~GND                                                                                                                                                                                                             ; 81      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_right_channel~0                                                                                                                       ; 49      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; KEY[0]~inputclkctrl                                                                                                                                                                                              ; 54      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; copy_machine:processing|buffer_register:output_register|writedata_right[23]~0                                                                                                                                    ; 48      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; copy_machine:processing|buffer_register:input_register|writedata_right[23]~0                                                                                                                                     ; 48      ;
+; Rule T101: Nodes with more than the specified number of fan-outs ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out~6                                                                                                                        ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; CLOCK_50~inputclkctrl                                                                                                                                                                                            ; 449     ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; ~GND                                                                                                                                                                                                             ; 81      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; KEY[0]~inputclkctrl                                                                                                                                                                                              ; 54      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[0]                                                                                                            ; 50      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_right_channel~0                                                                                                                       ; 49      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_left_channel                                                                                                                          ; 48      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; copy_machine:processing|buffer_register:input_register|writedata_right[23]~0                                                                                                                                     ; 48      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[4]                                                                                                            ; 48      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; copy_machine:processing|buffer_register:output_register|writedata_right[23]~0                                                                                                                                    ; 48      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[1]                                                                                                            ; 48      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[2]                                                                                                            ; 45      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[3]                                                                                                            ; 41      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out~6                                                                                                                        ; 33      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[5]                                                                                                            ; 29      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|data_in_shift_reg[15]~1                                                                                                                  ; 24      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[15]~29                                                                                                                  ; 23      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[15]~25                                                                                                                  ; 23      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~2                                                                                                                                   ; 22      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~4                                                                                                                                   ; 22      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~3                                                                                                                                   ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|comb~1                                                                                                                                     ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|s_i2c_auto_init.AUTO_STATE_1_SEND_START_BIT                                                                                       ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~1                                                                                                                                   ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|comb~0                                                                                                                                     ; 16      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|s_i2c_transceiver.I2C_STATE_6_COMPLETE                                                                                                                ; 12      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_Slow_Clock_Generator:Clock_Generator_400KHz|clk_counter[6]~30                                                                                                            ; 10      ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_Slow_Clock_Generator:Clock_Generator_400KHz|middle_of_low_level                                                                                                          ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|transfer_data                                                                                                                     ; 9       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|usedw_will_be_1~0       ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out[3]~30                                                                                                                    ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|data_to_transfer[0]~1                                                                                                                                                              ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|usedw_will_be_1~0        ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|current_bit[1]                                                                                                                                        ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|current_byte[0]~1                                                                                                                                     ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|usedw_will_be_1~0         ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|usedw_will_be_1~0        ; 8       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|current_bit[0]                                                                                                                                        ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|s_i2c_auto_init~14                                                                                                                ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|s_i2c_transceiver.I2C_STATE_3_TRANSFER_BYTE                                                                                                           ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_0ab:wr_ptr|_~0     ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_0ab:wr_ptr|_~0       ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_0ab:wr_ptr|_~0      ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_0ab:wr_ptr|_~0      ; 7       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_v9b:rd_ptr_msb|_~0 ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_v9b:rd_ptr_msb|_~0  ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Clock_Edge:ADC_Left_Right_Clock_Edges|cur_test_clk                                                                                                                                   ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|s_i2c_transceiver.I2C_STATE_0_IDLE                                                                                                                    ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|s_i2c_transceiver.I2C_STATE_2_START_BIT                                                                                                               ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|Altera_UP_SYNC_FIFO:Audio_Out_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_v9b:rd_ptr_msb|_~1   ; 6       ;
+; Rule T102: Top nodes with the highest number of fan-outs         ; audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Left_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|cntr_v9b:rd_ptr_msb|_~0  ; 6       ;
++------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------+
+; Design Assistant Messages ;
++---------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Design Assistant
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Thu Jun 13 16:09:01 2019
+Info: Command: quartus_drc audio_processing_for_DE2 -c audio_processing_for_DE2
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'audio_processing_for_DE2.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332144): No user constrained generated clocks found in the design
+Info (332144): No user constrained base clocks found in the design
+Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Warning (308023): (Medium) Rule R102: External reset signals should be synchronized using two cascaded registers. Found 1 node(s) related to this rule.
+    Warning (308010): Node  "KEY[0]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/topLevelDE2.vhd Line: 15
+Info (308046): (Information) Rule T101: Nodes with more than the specified number of fan-outs. (Value defined:30). Found 13 node(s) with highest fan-out.
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[3]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[0]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "CLOCK_50~inputclkctrl" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/topLevelDE2.vhd Line: 12
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[1]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[2]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[4]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_left_channel" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 110
+    Info (308011): Node  "~GND"
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_right_channel~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 111
+    Info (308011): Node  "KEY[0]~inputclkctrl" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/topLevelDE2.vhd Line: 15
+    Info (308011): Node  "copy_machine:processing|buffer_register:output_register|writedata_right[23]~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/buffer_register.vhd Line: 50
+    Info (308011): Node  "copy_machine:processing|buffer_register:input_register|writedata_right[23]~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/buffer_register.vhd Line: 50
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out~6" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 103
+Info (308044): (Information) Rule T102: Top nodes with the highest number of fan-outs. (Value defined:50). Found 50 node(s) with highest fan-out.
+    Info (308011): Node  "CLOCK_50~inputclkctrl" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/topLevelDE2.vhd Line: 12
+    Info (308011): Node  "~GND"
+    Info (308011): Node  "KEY[0]~inputclkctrl" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/topLevelDE2.vhd Line: 15
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[0]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_right_channel~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 111
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|read_left_channel" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 110
+    Info (308011): Node  "copy_machine:processing|buffer_register:input_register|writedata_right[23]~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/buffer_register.vhd Line: 50
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[4]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "copy_machine:processing|buffer_register:output_register|writedata_right[23]~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/files/buffer_register.vhd Line: 50
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[1]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[2]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[3]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out~6" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 103
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|rom_address_counter[5]" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 284
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|data_in_shift_reg[15]~1" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_In_Deserializer.v Line: 164
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[15]~29" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 177
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|data_out_shift_reg[15]~25" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Audio_Out_Serializer.v Line: 177
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~2"
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~4"
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~3"
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|comb~1"
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|s_i2c_auto_init.AUTO_STATE_1_SEND_START_BIT" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 139
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|comb~1"
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_Out_Serializer:Audio_Out_Serializer|comb~0"
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C:I2C_Controller|s_i2c_transceiver.I2C_STATE_6_COMPLETE" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C.v Line: 144
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_Slow_Clock_Generator:Clock_Generator_400KHz|clk_counter[6]~30" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Slow_Clock_Generator.v Line: 124
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_Slow_Clock_Generator:Clock_Generator_400KHz|middle_of_low_level" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_Slow_Clock_Generator.v Line: 98
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|transfer_data" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 104
+    Info (308011): Node  "audio_codec:audio|Altera_UP_Audio_In_Deserializer:Audio_In_Deserializer|Altera_UP_SYNC_FIFO:Audio_In_Right_Channel_FIFO|scfifo:Sync_FIFO|scfifo_o441:auto_generated|a_dpfifo_bs31:dpfifo|usedw_will_be_1~0" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/project/db/a_dpfifo_bs31.tdf Line: 70
+    Info (308011): Node  "audio_and_video_config:avIntf|Altera_UP_I2C_AV_Auto_Initialize:Auto_Initialize|data_out[3]~30" File: /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v Line: 225
+    Info (308002): Truncated list of Design Assistant messages to 30 messages. Go to sections under Design Assistant section of Compilation Report for complete lists of Design Assistant messages generated.
+Info (308007): Design Assistant information: finished post-fitting analysis of current design -- generated 63 information messages and 1 warning messages
+Info: Quartus Prime Design Assistant was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 949 megabytes
+    Info: Processing ended: Thu Jun 13 16:09:01 2019
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
+
+

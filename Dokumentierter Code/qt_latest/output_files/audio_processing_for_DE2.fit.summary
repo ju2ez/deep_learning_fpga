@@ -1,0 +1,16 @@
+Fitter Status : Successful - Thu Aug  8 18:18:42 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : audio_processing_for_DE2
+Top-level Entity Name : topLevelDE2
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 726 / 114,480 ( < 1 % )
+    Total combinational functions : 583 / 114,480 ( < 1 % )
+    Dedicated logic registers : 470 / 114,480 ( < 1 % )
+Total registers : 470
+Total pins : 52 / 529 ( 10 % )
+Total virtual pins : 0
+Total memory bits : 12,414 / 3,981,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
+Total PLLs : 1 / 4 ( 25 % )

@@ -1,0 +1,475 @@
+--------------------------------------------------------------------
+--	Single-clock Synchronous FIFO Parameterized Megafunction - SCFIFO
+--
+--  Copyright (C) 1991-2013 Altera Corporation
+--  Your use of Altera Corporation's design tools, logic functions  
+--  and other software and tools, and its AMPP partner logic  
+--  functions, and any output files from any of the foregoing  
+--  (including device programming or simulation files), and any  
+--  associated documentation or information are expressly subject  
+--  to the terms and conditions of the Altera Program License  
+--  Subscription Agreement, Altera MegaCore Function License  
+--  Agreement, or other applicable license agreement, including,  
+--  without limitation, that your use is for the sole purpose of  
+--  programming logic devices manufactured by Altera and sold by  
+--  Altera or its authorized distributors.  Please refer to the  
+--  applicable agreement for further details. 
+--  
+--  Quartus II 13.0.1 Build 232 06/12/2013 
+--
+--	Version 1.0
+--
+--------------------------------------------------------------------
+-- Altera recommends to use this FIFO for new designs.
+--------------------------------------------------------------------
+--
+--  The synchronous FIFO acts like a temporary memory where you can write data 
+--   and read it back later. 
+--  The FIFO is "First-in First-out", words written first in the FIFO are read back first.
+--
+--  It has:
+--    1. an input data[] port to write to the FIFO.
+--    2. an output q[] port to read from the FIFO.
+--
+--  The FIFO is initially empty. It keeps tracks of how full it is in an output 
+--   called USEDW[]. Writing a data increments it by 1. Reading decrements it by 1.
+--    1. The FIFO is empty when USEDW[]=0.
+--    2. The FIFO is full when USEDW[] gets to a maximum predefined value, 
+--        the FIFO's depth. You specify it using the LPM_NUMWORDS parameter.
+--       When it reaches the maximum depth, you cannot write to it any more. You need 
+--        to read (empty the FIFO a little) before being able to write again.
+--
+--  Both reading and writing during a same clock cycle are possible.
+--
+--------------------------------------------------------------------
+-- Detailed description:
+-- 1. The FIFO has independent RdReq (read-request) and WrReq (write-request) 
+--     inputs so that it allows 4 combination of requests:
+--       1. no request - the FIFO remains unchanged
+--       2. Read request (R-cycle) 
+--       3. Write request (W-cycle)
+--       4. Read/Write request (RW-cycle)
+--     All requests are synchronous to the clock port. 
+--
+-- 2. R-cycles: a word is read from the FIFO and goes to q[] when RdReq 
+--     is asserted, synchronized to clock (see also rule 1 below).
+--
+-- 3. W-cycles: a word data[] is written to the FIFO when WrReq 
+--     is asserted, synchronized to clock (see also rule 2 below).
+--
+-- 4. RW-cycles: a word is written to the FIFO (from d[]) and a word is read 
+--     from the FIFO (goes to q[]), synchronized to clock (rules 1 & 2 apply).
+--
+-- 5. The FIFO provides Empty/Full flags.
+--    It also provides a usedw[] output representing the number of words in the FIFO.
+--    This allows the user to create efficiently any half-full flags (MSB of usedw[]), 
+--     or almost-full/almost-empty flags, and dynamic capacity checking.
+--
+--------------------------------------------------------------------
+-- FIFO rules:
+-- 1. You cannot read an empty FIFO, write something first.
+--    Reads while the FIFO is empty are IGNORED
+--     (see below UNDERFLOW_CHECKING and LPM_SHOWAHEAD).
+--    For example, one trying a RW-cycle on an empty FIFO will only get a W-cycle,
+--     the read being ignored. On the second clock cycle, a R-cycle can now be performed, 
+--     and the data would be ready on the q[] output for the third clock cycle.
+--
+--    By setting LPM_SHOWAHEAD to "ON", you allow a data to appear on the q[] output 
+--     immediately after being written if the FIFO is empty. The RdReq port acts then like a 
+--     read-acknowledge. Each data become available as soon as the previous has been 
+--     acknowledged.
+--    In the previous example, the data would become available on q[] on the second clock 
+--     cycle instead of on the third, and a R-cycle would just acknowledge that the data
+--     has been read.
+--    The FIFO flags (empty/full) are NOT affected by this parameter.
+--    Note that this mode suffers a performance penalty.
+--
+--    By setting UNDERFLOW_CHECKING to "OFF", you can prevent any underflow checking
+--     to take place inside the FIFO. In this mode, it is the responsibility of 
+--     the outside logic of the FIFO to prevent underflowing the FIFO (it should be 
+--     avoided as it makes the FIFO go to an undefined state). 
+--
+-- 2. You cannot write a full FIFO, make a R-cycle first. 
+--    Write-requests while the FIFO is full are IGNORED by default
+--     (see below ALLOW_RWCYCLE_WHEN_FULL and OVERFLOW_CHECKING).
+--    For example, trying a RW-cycle on a full FIFO will only get a R-cycle.
+--
+--    By setting the ALLOW_RWCYCLE_WHEN_FULL parameter to "ON", you can allow
+--     RW-cycles when the FIFO is full. Doing so leaves the FIFO in full state.
+--     W-cycles alone are still ignored.
+--    Note that this mode suffers a performance penalty.
+--
+--    By setting OVERFLOW_CHECKING to "OFF", you can prevent any overflow checking
+--     to take place inside the FIFO. In this mode, it is the responsibility of the 
+--     outside logic of the FIFO to prevent overflowing the FIFO (it should be 
+--     avoided as it makes the FIFO go to an undefined state). 
+--    Note that when OVERFLOW_CHECKING is set to "OFF", the ALLOW_RWCYCLE_WHEN_FULL parameter
+--     is ignored as the FIFO doesn't do any more overflow checking.
+--
+-- 3. When the FIFO is neither empty or full, you can issue a RW-cycle.
+--
+--------------------------------------------------------------------
+-- REQUIRED PARAMETERS:
+--	  LPM_WIDTH					- width of the FIFO in bits
+--	  LPM_NUMWORDS				- depth of the FIFO (must be at least 2 level deep)
+--
+-- OPTIONAL PARAMETERS:
+--    LPM_SHOWAHEAD				- allow the data to appear on q[] before RdReq is asserted, "ON" or "OFF" (default)
+--    UNDERFLOW_CHECKING		- disable reading an empty FIFO, "ON" (default) or "OFF"
+--    OVERFLOW_CHECKING			- disable writing a full FIFO, "ON" (default) or "OFF"
+--    ALLOW_RWCYCLE_WHEN_FULL	- allow read/write cycles to an already full FIFO, so that it remains full, "ON" or "OFF" (default)
+--								-  note: this parameter is used only when OVERFLOW_CHECKING="ON"
+--    USE_EAB					- selects between EAB or LE-based FIFO, "ON" (default) or "OFF"
+--    MAXIMIZE_SPEED			- for LE-fifos only, see below
+--								- if unused, the OPTIMIZE_FOR_SPEED global parameter value is used instead
+--
+--------------------------------------------------------------------
+-- INPUT PORTS:
+--	  data[LPM_WIDTH-1..0]		- input data bus
+--
+--	  wrreq						- write-request
+--								- The word presented to data[] is written in the FIFO if 
+--								-  1. wrreq is asserted 
+--								-  2. full is not asserted (unless OVERFLOW_CHECKING="OFF")
+--
+--	  rdreq						- read-request
+--								- A word is read from the FIFO and goes to q[] if 
+--								-  1. rdreq is asserted 
+--								-  2. empty is not asserted (unless UNDERFLOW_CHECKING="OFF")
+--
+--	  clock						-
+--
+--	  aclr						- asynchronous reset (flush the FIFO)
+--	  sclr						- synchronous reset (flush the FIFO)
+--
+-- OUTPUT PORTS:
+--	  q[LPM_WIDTH-1..0] 		- output data bus
+--
+--	  full						- true (VCC) to indicate that the FIFO is full, i.e. usedw[]=LPM_NUMWORDS
+--								- if true, disables any write-request to the FIFO
+--	  empty						- true (VCC) to indicate that the FIFO is empty, i.e. usedw[]=0
+--								- if true, disables any read-request to the FIFO
+--
+--	  almost_full				- true if usedw[]>=ALMOST_FULL_VALUE
+--    almost_empty				- true if usedw[]<ALMOST_EMPTY_VALUE
+--
+--	  usedw[]					- number of words currently in the FIFO
+--
+--------------------------------------------------------------------
+-- SFIFO allows instantiation of different sub-designs, depending of some
+--	parameter values. All provide the same basic functionality and behavior:
+--	* LE-based FIFO:
+--		Uses LCELLs for data queuing.
+--      Fast but requires a lot of area - suitable only for small depths
+--	   The parameter MAXIMIZE_SPEED allows the designer to choose between
+--		two different implementations of LE-based FIFOs. Both are functionally 
+--		identical and differ only in their internal way of operation.
+--	    * implementation1 a_fffifo, if MAXIMIZE_SPEED<7
+--  	* implementation2 a_f2fifo, if MAXIMIZE_SPEED>=7
+--	   Anyway, as it is always the case for synthesizable functions, the resulting
+--		synthesized function is dependant of the environment in which it is used.
+--		It is the responsibility of the designer using LE-based FIFO to ensure that
+--		its choice for MAXIMIZE_SPEED parameter results effectively in an 
+--		appropriate function in terms of speed and lcells usage.
+--  * Interleaved-memory FIFO:
+--		Uses EAB(s) for data queuing.
+--      Not as fast as LE-based FIFOs but suitable for large depths (usually>=256)
+--		The EAB(s) are allocated in pairs for allowing concurrent read/write cycles.
+--	   Note that this design instanciates a_i2fifo. A similar design, a_imfifo, is smaller 
+--		and can be pipelined. It may be advisable in some cases to use it for extra speed.
+--		Its behavior is not exactly identical and care should be taken to check if it
+--		matches your design requirements.
+--
+--------------------------------------------------------------------
+OPTIONS NAME_SUBSTITUTION = ON;
+
+include "a_regfifo.inc";
+include "a_dpfifo.inc";
+include "a_i2fifo.inc";
+include "a_fffifo.inc";
+include "a_f2fifo.inc";
+include "aglobal130.inc";
+
+parameters							-- see above for parameters description
+(
+	LPM_WIDTH,
+	LPM_NUMWORDS,
+
+	LPM_WIDTHU = CEIL(LOG2(LPM_NUMWORDS)), -- simulation parameter added for simgen flow
+	LPM_SHOWAHEAD = "OFF",
+	UNDERFLOW_CHECKING = "ON",
+	OVERFLOW_CHECKING = "ON",
+	ALLOW_RWCYCLE_WHEN_FULL = "OFF",
+	ADD_RAM_OUTPUT_REGISTER = "OFF",
+
+	ALMOST_FULL_VALUE = 0,
+	ALMOST_EMPTY_VALUE = 0,
+	
+	USE_EAB = "ON",
+	MAXIMIZE_SPEED = 5,
+	DEVICE_FAMILY,
+	OPTIMIZE_FOR_SPEED = 5,
+	CBXI_PARAMETER = "NOTHING"
+);
+FUNCTION @CBXI_PARAMETER (data[LPM_WIDTH-1..0], wrreq, rdreq, clock, aclr, sclr) RETURNS (q[LPM_WIDTH-1..0], empty, full, almost_full, almost_empty, usedw[ceil(log2(LPM_NUMWORDS))-1..0]);
+
+--------------------------------------------------------------------
+constant USEDSPEED = used(MAXIMIZE_SPEED) ? MAXIMIZE_SPEED : OPTIMIZE_FOR_SPEED;
+constant PRE_ALMOST_FULL_VALUE = ALMOST_FULL_VALUE>0 ? ALMOST_FULL_VALUE-1 : 0;
+constant PRE_ALMOST_EMPTY_VALUE = ALMOST_EMPTY_VALUE>0 ? ALMOST_EMPTY_VALUE-1 : 0;
+
+define USED_FIFO()= (
+  (LPM_NUMWORDS<2)												? USE_REGFIFO:
+  (USE_EAB=="ON") & (FAMILY_HAS_DUALPORT_EAB()==1)				? USE_DPFIFO:
+  (USE_EAB=="ON") & (FAMILY_HAS_EAB()==1) & (LPM_NUMWORDS>=8)	? USE_I2FIFO:
+  (USEDSPEED<7) # (LPM_NUMWORDS>=256)							? USE_FFFIFO: USE_F2FIFO
+					);
+
+constant USE_REGFIFO= 0;
+constant USE_DPFIFO	= 1;
+constant USE_I2FIFO	= 2;
+constant USE_FFFIFO	= 3;
+constant USE_F2FIFO	= 4;
+constant WIDTHAD = LPM_NUMWORDS>=2 ? ceil(log2(LPM_NUMWORDS)) : 1;
+
+--------------------------------------------------------------------
+subdesign scfifo								-- see above for ports description
+(
+	data[LPM_WIDTH-1..0]		: input;
+	q[LPM_WIDTH-1..0]			: output;
+
+	wrreq, rdreq				: input;
+	clock						: input;
+	aclr, sclr					: input = gnd;
+
+	empty, full					: output;
+	almost_full, almost_empty	: output;
+	usedw[WIDTHAD-1..0]			: output;		-- # of words in the FIFO
+)
+
+--------------------------------------------------------------------
+variable
+	IF (CBXI_PARAMETER == "NOTHING") GENERATE
+ 		if USED_FIFO()==USE_REGFIFO generate 
+			subfifo: a_regfifo with( 
+			 LPM_WIDTH=LPM_WIDTH, LPM_NUMWORDS=LPM_NUMWORDS, LPM_SHOWAHEAD=LPM_SHOWAHEAD,
+			 UNDERFLOW_CHECKING=UNDERFLOW_CHECKING, OVERFLOW_CHECKING=OVERFLOW_CHECKING, 
+			 ALLOW_RWCYCLE_WHEN_FULL=ALLOW_RWCYCLE_WHEN_FULL );
+		end generate;
+
+ 		if USED_FIFO()==USE_DPFIFO generate 
+			subfifo: a_dpfifo with( 
+			 LPM_WIDTH=LPM_WIDTH, LPM_NUMWORDS=LPM_NUMWORDS, LPM_SHOWAHEAD=LPM_SHOWAHEAD,
+			 UNDERFLOW_CHECKING=UNDERFLOW_CHECKING, OVERFLOW_CHECKING=OVERFLOW_CHECKING, 
+			 ALLOW_RWCYCLE_WHEN_FULL=ALLOW_RWCYCLE_WHEN_FULL );
+		end generate;
+
+ 		if USED_FIFO()==USE_I2FIFO generate 
+			subfifo: a_i2fifo with( 
+			 LPM_WIDTH=LPM_WIDTH, LPM_NUMWORDS=LPM_NUMWORDS, LPM_SHOWAHEAD=LPM_SHOWAHEAD,
+			 UNDERFLOW_CHECKING=UNDERFLOW_CHECKING, OVERFLOW_CHECKING=OVERFLOW_CHECKING, 
+			 ALLOW_RWCYCLE_WHEN_FULL=ALLOW_RWCYCLE_WHEN_FULL );
+		end generate;
+
+ 		if USED_FIFO()==USE_FFFIFO generate 
+			subfifo: a_fffifo with( 
+			 LPM_WIDTH=LPM_WIDTH, LPM_NUMWORDS=LPM_NUMWORDS, LPM_SHOWAHEAD=LPM_SHOWAHEAD,
+			 UNDERFLOW_CHECKING=UNDERFLOW_CHECKING, OVERFLOW_CHECKING=OVERFLOW_CHECKING, 
+			 ALLOW_RWCYCLE_WHEN_FULL=ALLOW_RWCYCLE_WHEN_FULL );
+		end generate;
+
+ 		if USED_FIFO()==USE_F2FIFO generate 
+			subfifo: a_f2fifo with( 
+			 LPM_WIDTH=LPM_WIDTH, LPM_NUMWORDS=LPM_NUMWORDS, LPM_SHOWAHEAD=LPM_SHOWAHEAD,
+			 UNDERFLOW_CHECKING=UNDERFLOW_CHECKING, OVERFLOW_CHECKING=OVERFLOW_CHECKING, 
+			 ALLOW_RWCYCLE_WHEN_FULL=ALLOW_RWCYCLE_WHEN_FULL );
+		end generate;
+
+		if used(almost_full) and (ALMOST_FULL_VALUE!=0) and (ALMOST_FULL_VALUE!=LPM_NUMWORDS) generate
+			sm_almost_full: machine with states(state_naf, state_af);	
+		end generate;
+
+		if used(almost_empty) and (ALMOST_EMPTY_VALUE!=0) and (ALMOST_EMPTY_VALUE!=LPM_NUMWORDS) generate
+			sm_empty_empty: machine with states(state_ae, state_nae);	
+		end generate;
+	ELSE GENERATE
+		auto_generated : @CBXI_PARAMETER WITH (CBXI_PARAMETER = "NOTHING");
+	END GENERATE;
+--------------------------------------------------------------------
+begin
+	IF CBXI_PARAMETER == "NOTHING" GENERATE
+		assert (LPM_WIDTH>=1)
+				report "Value of LPM_WIDTH parameter must be greater than or equal to 1"
+				severity error
+				help_id SCFIFO_WIDTH;
+
+		ASSERT (FAMILY_IS_KNOWN() == 1)
+				REPORT "Megafunction scfifo does not recognize the current device family (%) -- ensure that you are using the newest version of the megafunction"
+					DEVICE_FAMILY
+				SEVERITY WARNING
+				HELP_ID SCFIFO_FAMILY_UNKNOWN;
+
+--------------------------------------------------------------------
+		assert (LPM_SHOWAHEAD=="ON") or (LPM_SHOWAHEAD=="OFF")
+				report "Illegal value for LPM_SHOWAHEAD parameter -- value must be ""ON"" or ""OFF"""
+				severity error
+				help_id SCFIFO_SHOWAHEAD;
+
+		assert (UNDERFLOW_CHECKING=="ON") or (UNDERFLOW_CHECKING=="OFF")
+				report "Illegal value for UNDERFLOW_CHECKING parameter -- value must be ""ON"" or ""OFF"""
+				severity error
+				help_id SCFIFO_UNDERFLOW_CHECKING;
+
+		assert (OVERFLOW_CHECKING=="ON") or (OVERFLOW_CHECKING=="OFF")
+				report "Illegal value for OVERFLOW_CHECKING parameter -- value must be ""ON"" or ""OFF"""
+				severity error
+				help_id SCFIFO_OVERFLOW_CHECKING;
+
+		assert (ALLOW_RWCYCLE_WHEN_FULL=="ON") or (ALLOW_RWCYCLE_WHEN_FULL=="OFF")
+				report "Illegal value for ALLOW_RWCYCLE_WHEN_FULL parameter -- value must be ""ON"" or ""OFF"""
+				severity error
+				help_id SCFIFO_ALLOW_RWCYCLE_WHEN_FULL;
+
+		assert (USE_EAB=="ON") or (USE_EAB=="OFF")
+				report "Illegal value for USE_EAB parameter -- value must be ""ON"" or ""OFF"""
+				severity error
+				help_id SCFIFO_USE_EAB;
+
+--------------------------------------------------------------------
+		assert (ALMOST_FULL_VALUE<=LPM_NUMWORDS)
+				report "Illegal value for ALMOST_FULL_VALUE parameter -- value must be less than or equal to LPM_NUMWORDS (%)"
+				LPM_NUMWORDS
+				severity error
+				help_id SCFIFO_ALMOST_FULL_VALUE;
+
+		assert (ALMOST_EMPTY_VALUE<=LPM_NUMWORDS)
+				report "Illegal value for ALMOST_EMPTY_VALUE parameter -- value must be less than or equal to LPM_NUMWORDS (%)"
+				LPM_NUMWORDS
+				severity error
+				help_id SCFIFO_ALMOST_EMPTY_VALUE;
+
+--------------------------------------------------------------------
+		assert USED_FIFO()!=USE_REGFIFO report "Instantiate REGFIFO" severity DEBUG;
+		assert USED_FIFO()!=USE_DPFIFO report "Instantiate DPFIFO" severity DEBUG;
+		assert USED_FIFO()!=USE_I2FIFO report "Instantiate I2FIFO" severity DEBUG;
+		assert USED_FIFO()!=USE_FFFIFO report "Instantiate FFFIFO" severity DEBUG;
+		assert USED_FIFO()!=USE_F2FIFO report "Instantiate F2FIFO" severity DEBUG;
+	
+--------------------------------------------------------------------
+		if used(aclr) generate
+			subfifo.(data[], clock, rreq, wreq, aclr, sclr) = (data[], clock, rdreq, wrreq, aclr, sclr);
+		else generate
+			subfifo.(data[], clock, rreq, wreq, sclr) = (data[], clock, rdreq, wrreq, sclr);
+		end generate;
+		(q[], empty, full, usedw[]) = subfifo.(q[], empty, full, usedw[]);
+	
+--------------------------------------------------------------------
+-- almost full & empty
+
+		if used(almost_full) generate
+			if ALMOST_FULL_VALUE==0 generate almost_full=VCC; else generate
+			if ALMOST_FULL_VALUE==LPM_NUMWORDS generate almost_full=full; else generate
+
+				case sm_almost_full is
+				when state_naf	=>	
+					if (PRE_ALMOST_FULL_VALUE==0) generate
+									if !sclr and (usedw[]==PRE_ALMOST_FULL_VALUE) and wrreq then
+										sm_almost_full = state_af;
+									end if;
+					else generate
+									if !sclr and (usedw[]==PRE_ALMOST_FULL_VALUE) and wrreq and !rdreq then
+										sm_almost_full = state_af;
+									end if;
+					end generate;
+				when state_af	=>	
+									if sclr or ((usedw[]==ALMOST_FULL_VALUE) and !wrreq and rdreq) then
+										sm_almost_full = state_naf;
+									end if;
+				end case;
+				
+				sm_almost_full .(clk, reset) = (clock, aclr);
+				almost_full = (sm_almost_full==state_af);
+			end generate; end generate;
+		end generate;
+		
+		if used(almost_empty) generate
+			if ALMOST_EMPTY_VALUE==0 generate almost_empty=GND; else generate
+			if ALMOST_EMPTY_VALUE==LPM_NUMWORDS generate almost_empty=!full; else generate
+				case sm_empty_empty is
+				when state_ae	=>	
+					if (PRE_ALMOST_EMPTY_VALUE==0) generate
+									if !sclr and (usedw[]==PRE_ALMOST_EMPTY_VALUE) and wrreq then
+										sm_empty_empty = state_nae;
+									end if;
+					else generate
+									if !sclr and (usedw[]==PRE_ALMOST_EMPTY_VALUE) and wrreq and !rdreq then
+										sm_empty_empty = state_nae;
+									end if;
+					end generate;
+				when state_nae	=>	if sclr or ((usedw[]==ALMOST_EMPTY_VALUE) and !wrreq and rdreq) then
+										sm_empty_empty = state_ae;
+									end if;
+				end case;
+				
+				sm_empty_empty.(clk, reset) = (clock, aclr);
+				almost_empty = (sm_empty_empty==state_ae);
+			end generate; end generate;
+		end generate;
+	ELSE GENERATE
+		IF USED(data) GENERATE
+			auto_generated.data[] = data[];
+		END GENERATE;
+		IF USED(wrreq) GENERATE
+			auto_generated.wrreq = wrreq;
+		END GENERATE;
+		IF USED(rdreq) GENERATE
+			auto_generated.rdreq = rdreq;
+		END GENERATE;
+		IF USED(clock) GENERATE
+			auto_generated.clock = clock;
+		END GENERATE;
+		IF USED(aclr) GENERATE
+			auto_generated.aclr = aclr;
+		END GENERATE;
+		IF USED(sclr) GENERATE
+			auto_generated.sclr = sclr;
+		END GENERATE;
+		IF USED(q) GENERATE
+			q[] = auto_generated.q[];
+		END GENERATE;
+		IF USED(empty) GENERATE
+			empty = auto_generated.empty;
+		END GENERATE;
+		IF USED(full) GENERATE
+			full = auto_generated.full;
+		END GENERATE;
+		IF USED(almost_full) GENERATE
+			almost_full = auto_generated.almost_full;
+		END GENERATE;
+		IF USED(almost_empty) GENERATE
+			almost_empty = auto_generated.almost_empty;
+		END GENERATE;
+		IF USED(usedw) GENERATE
+			usedw[] = auto_generated.usedw[];
+		END GENERATE;
+	END GENERATE;
+	IF !USED(almost_full) GENERATE
+		almost_full = GND;
+	END GENERATE;
+	IF !USED(usedw) GENERATE
+		usedw[] = GND;
+	END GENERATE;
+	IF !USED(q) GENERATE
+		q[] = GND;
+	END GENERATE;
+	IF !USED(almost_empty) GENERATE
+		almost_empty = GND;
+	END GENERATE;
+	IF !USED(empty) GENERATE
+		empty = GND;
+	END GENERATE;
+	IF !USED(full) GENERATE
+		full = GND;
+	END GENERATE;
+end;
+

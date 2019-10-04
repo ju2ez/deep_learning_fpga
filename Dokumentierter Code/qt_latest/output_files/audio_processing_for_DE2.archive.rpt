@@ -1,0 +1,101 @@
+Archive Project report for audio_processing_for_DE2
+Thu Jul 04 18:18:30 2019
+Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Thu Jul 04 18:18:30 2019 ;
+; Revision Name          ; audio_processing_for_DE2              ;
+; Top-level Entity Name  ; topLevelDE2                           ;
+; Family                 ; Cyclone IV E                          ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/Users/User/Documents/qt_latest/audio_processing_for_DE2.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'audio_processing_for_DE2.archive.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/13.0sp1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 32-bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 263 megabytes
+    Info: Processing ended: Thu Jul 04 18:18:30 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++---------------------------------------------------------------------+
+; Files Archived                                                      ;
++---------------------------------------------------------------------+
+; File Name                                                           ;
++---------------------------------------------------------------------+
+; ACDI_DE2/Altera_UP_Audio_Bit_Counter.v                              ;
+; ACDI_DE2/Altera_UP_Audio_In_Deserializer.v                          ;
+; ACDI_DE2/Altera_UP_Audio_Out_Serializer.v                           ;
+; ACDI_DE2/Altera_UP_Clock_Edge.v                                     ;
+; ACDI_DE2/Altera_UP_I2C.v                                            ;
+; ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v                         ;
+; ACDI_DE2/Altera_UP_I2C_DC_Auto_Initialize.v                         ;
+; ACDI_DE2/Altera_UP_I2C_LCM_Auto_Initialize.v                        ;
+; ACDI_DE2/Altera_UP_Slow_Clock_Generator.v                           ;
+; ACDI_DE2/Altera_UP_SYNC_FIFO.v                                      ;
+; ACDI_DE2/audio_and_video_config.v                                   ;
+; ACDI_DE2/audio_codec.v                                              ;
+; ACDI_DE2/circular_buffer.vhd                                        ;
+; ACDI_DE2/clock_generator.v                                          ;
+; ACDI_DE2/neuron.vhd                                                 ;
+; ACDI_DE2/ring_buffer_toplevel.vhd                                   ;
+; assignment_defaults.qdf                                             ;
+; audio_processing_for_DE2.qpf                                        ;
+; audio_processing_for_DE2.qsf                                        ;
+; files/audioDataPkg.vhd                                              ;
+; files/buffer_register.vhd                                           ;
+; files/compare_unit.vhd                                              ;
+; files/copy_machine.vhd                                              ;
+; files/copy_machine_control_unit.vhd                                 ;
+; files/topLevelDE2.vhd                                               ;
+; files/yourCircuit.vhd                                               ;
+; incremental_db/compiled_partitions/audio_processing_for_DE2.db_info ;
+; output_files/denoising_auto_encoder.vhd                             ;
+; simulator/tb_testWithSimulator.vhd                                  ;
++---------------------------------------------------------------------+
+
+

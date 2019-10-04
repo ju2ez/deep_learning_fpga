@@ -1,0 +1,5 @@
+PLL_Name	clock_generator:cgen|altpll:DE_Clock_Generator_Audio|pll
+PLLJITTER	45
+PLLSPEmax	84
+PLLSPEmin	-53
+

@@ -1,7 +1,0 @@
-test_files/
-audio_samples/
-augmented_audio_samples/
-__pycache__/
-.ipynb_checkpoints/
-*.swp
-*.sop

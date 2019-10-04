@@ -1,0 +1,89 @@
+-- copy_machine_control_unit
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity COPY_MACHINE_CONTROL_UNIT is
+    port
+    (
+        CLK            : in    std_logic;                           -- clock
+        RESET          : in    std_logic;                           -- reset
+        READDATA_LEFT  : in    std_logic_vector(23 downto 0);       -- gets audio data as input (left channel)
+        READDATA_RIGHT : in    std_logic_vector(23 downto 0);       -- gets audio data as input (right channel)
+        READ_S         : in    std_logic;                           -- x
+        READ_READY     : out   std_logic;                           -- 
+        WRITE_READY    : out   std_logic                            -- x
+    );
+end COPY_MACHINE_CONTROL_UNIT;
+
+architecture BEHAVE of COPY_MACHINE_CONTROL_UNIT is
+begin
+    process(RESET, CLK, READDATA_LEFT, READDATA_RIGHT, READ_S ) is
+        -- DEFINE A STATE-TYPE
+        type TSTATE is(
+            WAIT_FOR_DATA,            -- 
+            INPUT_BUFFER,             -- 
+            PROCESSING,               -- 
+            TO_AUDIO_CODEC_INTERFACE  -- 
+        );
+        variable STATE : TSTATE;
+        -- VARIABLES
+        variable READDATA              : std_logic;                           -- Daten wurden erfolgreich in den Buffer geschrieben
+        variable OUTPUT_BUFFER         : std_logic_vector(23 downto 0);       -- Schreiben in den output buffer
+        variable DONE_WRITING_TO_CODEC : std_logic;                           -- Fertig mit schreiben ins codec interface
+        variable INPUT_BUFFER_DONE     : std_logic;                           -- der input buffer wurde erfolgreich beschrieben
+        variable DONE_WRITING_OUT_BUF  : std_logic;                           -- der output buffer wurde erfolgreich beschrieben
+        variable READ_S                : std_logic;                           -- x
+    begin
+        if RESET='1' then
+            STATE := WAIT_FOR_DATA;
+        elsif CLK'event and CLK='1' then
+            -- STATE-TRANSITION-FUNCTION
+            case STATE is
+                when WAIT_FOR_DATA =>
+                    if((READ_S='0')) then
+                        STATE := WAIT_FOR_DATA;
+                    elsif((READ_S='1')) then
+                        STATE := INPUT_BUFFER;
+                    end if;
+                when INPUT_BUFFER =>
+                    if((INPUT_BUFFER_DONE='1')) then
+                        STATE := PROCESSING;
+                    elsif((INPUT_BUFFER_DONE='0')) then
+                        STATE := INPUT_BUFFER;
+                    end if;
+                when PROCESSING =>
+                    if((DONE_WRITING_OUT_BUF='1')) then
+                        STATE := TO_AUDIO_CODEC_INTERFACE;
+                    elsif((DONE_WRITING_OUT_BUF='0')) then
+                        STATE := PROCESSING;
+                    end if;
+                when TO_AUDIO_CODEC_INTERFACE =>
+                    if((DONE_WRITING_TO_CODEC='1')) then
+                        STATE := WAIT_FOR_DATA;
+                    elsif((DONE_WRITING_TO_CODEC='0')) then
+                        STATE := TO_AUDIO_CODEC_INTERFACE;
+                    end if;
+                when others =>
+                    STATE := WAIT_FOR_DATA;
+            end case;
+        end if;
+        -- OUTPUT-FUNCTION
+        case STATE is
+                when WAIT_FOR_DATA =>
+                    READ_READY  <= '1';
+                    WRITE_READY <= '0';
+                when INPUT_BUFFER =>
+                    READ_READY  <= '0';
+                    WRITE_READY <= '0';
+                when PROCESSING =>
+                    READ_READY  <= '0';
+                    WRITE_READY <= '0';
+                when TO_AUDIO_CODEC_INTERFACE =>
+                    READ_READY  <= '0';
+                    WRITE_READY <= '1';
+            end case;
+    end process;
+
+end BEHAVE;

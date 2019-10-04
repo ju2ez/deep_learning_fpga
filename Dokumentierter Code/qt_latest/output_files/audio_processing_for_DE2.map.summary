@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Aug  8 18:18:25 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : audio_processing_for_DE2
+Top-level Entity Name : topLevelDE2
+Family : Cyclone IV E
+Total logic elements : 791
+    Total combinational functions : 581
+    Dedicated logic registers : 524
+Total registers : 524
+Total pins : 52
+Total virtual pins : 0
+Total memory bits : 12,414
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1

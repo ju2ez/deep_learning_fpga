@@ -1,0 +1,101 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+# Date created = 14:59:31  June 09, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		audio_processing_for_DE2_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY topLevelDE2
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:59:31  JUNE 09, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_RUN_TOOL_AUTOMATICALLY OFF -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name SEARCH_PATH /home/julian/Documents/Programming/GitHub/deep_learning_fpga/quartus_project/ACDI_DE2
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH testbench -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME testbench -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testbench
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME testbench -section_id testbench
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name EDA_TEST_BENCH_FILE simulator/tb_testWithSimulator.vhd -section_id testbench
+set_global_assignment -name SEARCH_PATH ACDI_DE2/ -tag from_archive
+set_global_assignment -name SEARCH_PATH altera/13.0sp1/quartus/libraries/vhdl/ieee/ -tag from_archive
+set_global_assignment -name SEARCH_PATH files/ -tag from_archive
+set_global_assignment -name SEARCH_PATH megafunctions/ -tag from_archive
+set_global_assignment -name SEARCH_PATH output_files/ -tag from_archive
+set_global_assignment -name SEARCH_PATH simulator/ -tag from_archive
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_E21 -to LEDG
+set_global_assignment -name VHDL_FILE files/tb_audio_processing_copy_machine.vhd
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_Audio_Bit_Counter.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_Audio_In_Deserializer.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_Audio_Out_Serializer.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_Clock_Edge.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_I2C.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_I2C_AV_Auto_Initialize.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_I2C_DC_Auto_Initialize.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_I2C_LCM_Auto_Initialize.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_Slow_Clock_Generator.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/Altera_UP_SYNC_FIFO.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/audio_and_video_config.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/audio_codec.v
+set_global_assignment -name VERILOG_FILE ACDI_DE2/clock_generator.v
+set_global_assignment -name VHDL_FILE files/copy_machine_control_unit.vhd
+set_global_assignment -name VHDL_FILE files/audioDataPkg.vhd
+set_global_assignment -name VHDL_FILE files/yourCircuit.vhd
+set_global_assignment -name VHDL_FILE files/topLevelDE2.vhd
+set_global_assignment -name VHDL_FILE files/copy_machine.vhd
+set_global_assignment -name VHDL_FILE files/buffer_register.vhd
+set_global_assignment -name VHDL_FILE output_files/denoising_auto_encoder.vhd
+set_global_assignment -name VHDL_FILE ACDI_DE2/circular_buffer.vhd
+set_global_assignment -name VHDL_FILE ACDI_DE2/neuron.vhd
+set_global_assignment -name VHDL_FILE ACDI_DE2/ring_buffer_toplevel.vhd
+set_global_assignment -name VHDL_FILE files/compare_unit.vhd
+set_global_assignment -name SOURCE_FILE db/audio_processing_for_DE2.cmp.rdb
+set_global_assignment -name VHDL_FILE files/tb_ringbuffer_and_autoencoder.vhd
+set_global_assignment -name VHDL_FILE files/full_signal_unit.vhd
+set_global_assignment -name VHDL_FILE qt/project/files/tb_top_level.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

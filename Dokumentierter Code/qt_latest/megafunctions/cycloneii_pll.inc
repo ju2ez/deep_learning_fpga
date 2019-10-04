@@ -1,0 +1,93 @@
+----------------------------------------------------------------------------------------------------------
+--
+-- CYCLONEII_PLL.INC
+--
+-- Wysiwyg include file for Stratix II family PLL
+--
+-- (c) Altera Corporation, 2003
+--
+----------------------------------------------------------------------------------------------------------
+FUNCTION cycloneii_pll(
+						inclk[1..0],
+						clkswitch,
+						ena,
+						areset,
+						pfdena,
+						sbdin,
+						testclearlock,
+						testupout,
+						testdownout
+						)
+						WITH
+						(
+							OPERATION_MODE,
+							COMPENSATE_CLOCK,
+							TEST_INPUT_COMP_DELAY_CHAIN_BITS,
+							TEST_FEEDBACK_COMP_DELAY_CHAIN_BITS,
+							INCLK0_INPUT_FREQUENCY,
+							INCLK1_INPUT_FREQUENCY,
+							GATE_LOCK_SIGNAL,
+							GATE_LOCK_COUNTER,
+							CLK2_OUTPUT_FREQUENCY,
+							CLK1_OUTPUT_FREQUENCY,
+							CLK0_OUTPUT_FREQUENCY,
+							CLK2_MULTIPLY_BY,
+							CLK1_MULTIPLY_BY,
+							CLK0_MULTIPLY_BY,
+							CLK2_DIVIDE_BY,
+							CLK1_DIVIDE_BY,
+							CLK0_DIVIDE_BY,
+							CLK2_PHASE_SHIFT,
+							CLK1_PHASE_SHIFT,
+							CLK0_PHASE_SHIFT,
+							CLK2_DUTY_CYCLE,
+							CLK1_DUTY_CYCLE,
+							CLK0_DUTY_CYCLE,
+							BANDWIDTH,
+							BANDWIDTH_TYPE,
+							M_INITIAL,
+							M,
+							N,
+							C0_HIGH,
+							C1_HIGH,
+							C2_HIGH,
+							C0_LOW,
+							C1_LOW,
+							C2_LOW,
+							C0_INITIAL,
+							C1_INITIAL,
+							C2_INITIAL,
+							C0_MODE,
+							C1_MODE,
+							C2_MODE,
+							C0_PH,
+							C1_PH,
+							C2_PH,
+							M_PH,
+							CLK2_COUNTER,
+							CLK1_COUNTER,
+							CLK0_COUNTER,
+							CHARGE_PUMP_CURRENT,
+							LOOP_FILTER_R,
+							LOOP_FILTER_C,
+							VCO_POST_SCALE,
+							VCO_MULTIPLY_BY,
+							VCO_DIVIDE_BY,
+							VCO_MIN,
+							VCO_MAX,
+							VCO_CENTER,
+							PFD_MIN,
+							PFD_MAX,
+							LOCK_HIGH,
+							LOCK_LOW,
+							M_TEST_SOURCE,
+							C0_TEST_SOURCE,
+							C1_TEST_SOURCE,
+							C2_TEST_SOURCE
+						)
+						RETURNS
+						(
+							clk[2..0],
+							sbdout,
+							locked
+						);
